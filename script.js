@@ -33,11 +33,14 @@ document.querySelector('.number').textContent = secretNumber;
 // keep this as a global variable
 let score = 20; 
 
+//need to store the highscore in a variable 
+let highScore = 0;
+
 //-------------------------------------------//
 //----------THE GAMING ENVIRONMENT-----------//
 //-------------------------------------------//
 
-//.... input box, check! button and score..../
+//.... input box, check! button, score and highScore area..../
 
 //handling click on the 'check!' button: by using addEventListener() method
 document.querySelector('.check').addEventListener('click', function() {
@@ -59,6 +62,12 @@ document.querySelector('.check').addEventListener('click', function() {
     document.querySelector('body').style.backgroundColor = '#60b347'; 
         //increase the width:
     document.querySelector('.number').style.width = '30rem';
+
+    // check the current score vs highScore, if current score is higher than set it to the new highScore
+    if(score >highScore) {
+        highScore = score;
+        document.querySelector('.highscore').textContent = highScore;
+    }
 
         // when guess is too high:
     } else if(guess > secretNumber) {
@@ -95,7 +104,8 @@ document.querySelector('.check').addEventListener('click', function() {
 
 //.... again! button ....//
 
-//this setup allow us to play the game 'again!' without having to reload the browser
+//this setup allow us to play the game 'again!' without having to reload the browser aka restore everything 
+// everything will reset - EXCEPT the 'highScore' 
 //  select the element with the 'again' class and attach a click event handler:
 document.querySelector('.again').addEventListener('click', function() {
 
@@ -118,6 +128,3 @@ document.querySelector('.again').addEventListener('click', function() {
 
 
 
-
-
-//.... highscore  ....//
