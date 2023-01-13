@@ -1,8 +1,10 @@
 'use strict';
 
+//.... Notes and re-usable text ....//
+
 //What is DOM manipulation? 
 //      Document Object Model: a connection point between HTML doc and JS 
-//      to manipulate the DOM remember to use string capsule 
+//      to manipulate the DOM remember to use string capsule the value 
 //logging message to the console to see: 
 /*
 console.log(document.querySelector('.message').
@@ -20,6 +22,8 @@ document.querySelector('.guess').value = 23;
 console.log(document.querySelector('.guess').value);
 */
 
+//.... global variables ....//
+
 //secretNumber needs to be global, so set it outside of the .check button/addEventListener
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 document.querySelector('.number').textContent = secretNumber; 
@@ -29,10 +33,12 @@ document.querySelector('.number').textContent = secretNumber;
 // keep this as a global variable
 let score = 20; 
 
-
 //-------------------------------------------//
 //----------THE GAMING ENVIRONMENT-----------//
 //-------------------------------------------//
+
+//.... input box, check! button and score..../
+
 //handling click on the 'check!' button: by using addEventListener() method
 document.querySelector('.check').addEventListener('click', function() {
     // log the number entered in the square, will ONLY be call once 'check!' button is 'click'
@@ -86,3 +92,9 @@ document.querySelector('.check').addEventListener('click', function() {
     }
 });
 
+
+//.... again! button ....//
+
+
+
+//.... highscore  ....//
