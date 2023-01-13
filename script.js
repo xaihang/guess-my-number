@@ -20,14 +20,14 @@ document.querySelector('.guess').value = 23;
 console.log(document.querySelector('.guess').value);
 */
 
-//game logics:
-//      if the guess is correct (=== secretNumber)
-//       or guess is too hight to secretNumber
-//       or guess is too low to secretNumber
-
 //secretNumber needs to be global, so set it outside of the .check button/addEventListener
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 document.querySelector('.number').textContent = secretNumber; 
+
+// each time if guessing number is wrong - the score will decrease by 1
+// declare it with let because it will change throughout each play
+// keep this as a global variable
+let score = 20; 
 
 
 //handling click on the 'check!' button: by using addEventListener() method
@@ -49,10 +49,19 @@ document.querySelector('.check').addEventListener('click', function() {
         // if the guess is bigger than secretNumber:
     } else if(guess > secretNumber) {
         document.querySelector('.message').textContent = '⤴️ Too High!';
+        // if the guess is too high, it will auto decrement from starting score value
+        score--;
+        // then it will log it on the DOM with the decrement score
+        document.querySelector('.score').textContent = score;
 
         // if guess is lower than than secretNumber:
     } else if (guess < secretNumber) {
         document.querySelector('.message').textContent = '⤵️ Too Low!';
+          // if the guess is too high, it will auto decrement from starting score value
+        score--;
+         // then it will log it on the DOM with the decrement score
+        document.querySelector('.score').textContent = score;
     }
 });
+
 
