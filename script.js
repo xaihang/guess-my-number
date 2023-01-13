@@ -25,7 +25,7 @@ console.log(document.querySelector('.guess').value);
 //.... global variables ....//
 
 //secretNumber needs to be global, so set it outside of the .check button/addEventListener
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 document.querySelector('.number').textContent = secretNumber; 
 
 // each time if guessing number is wrong - the score will decrease by 1
@@ -94,6 +94,29 @@ document.querySelector('.check').addEventListener('click', function() {
 
 
 //.... again! button ....//
+
+//this setup allow us to play the game 'again!' without having to reload the browser
+//  select the element with the 'again' class and attach a click event handler:
+document.querySelector('.again').addEventListener('click', function() {
+
+    //  restore initial vales of the score and SecretNumber variable:
+    score = 20;    
+    secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+    //  restore the initial conditions of the message, number, score, and guess input field:
+    document.querySelector('.message').textContent = 'Start guessing...';
+    document.querySelector('.score').textContent = score;
+    document.querySelector('.number').textContent = '?'; 
+    document.querySelector('.guess').value = ''; //set to nothing aka empty string '' 
+
+    //  restore the original bg-color #222 and number width of 15rem: 
+    document.querySelector('body').style.backgroundColor = '#222';
+    document.querySelector('.number').style.width = '15rem';
+
+
+});
+
+
 
 
 
