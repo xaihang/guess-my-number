@@ -21,26 +21,38 @@ console.log(document.querySelector('.guess').value);
 */
 
 //game logics:
-//      if the guess is correct (=== secret number)
-//       or guess is too hight to secret number
-//       or guess is too low to secret number
+//      if the guess is correct (=== secretNumber)
+//       or guess is too hight to secretNumber
+//       or guess is too low to secretNumber
 
-//Secret number needs to be global, so set it outside of the .check button/addEventListener
+//secretNumber needs to be global, so set it outside of the .check button/addEventListener
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
-document.querySelector('.secretNumber').textContent = secretNumber; 
+document.querySelector('.number').textContent = secretNumber; 
 
 
 //handling click on the 'check!' button: by using addEventListener() method
 document.querySelector('.check').addEventListener('click', function() {
-    // log the secretNumber we enter in the square, will ONLY be call once 'check!' button is 'click'
+    // log the number entered in the square, will ONLY be call once 'check!' button is 'click'
     // console.log(document.querySelector('.guess').value); 
-   const guess = secretNumber(document.querySelector('.guess').value);
+   const guess = Number(document.querySelector('.guess').value);
    // log the guess and also the data type
     console.log(guess, typeof guess);
 
     //if there is no guess and 'check!' button is clicked:
     if(!guess) {
-        document.querySelector('.message').textContent = '⛔️ No number!'; 
-    } else if(guess === number)
+        document.querySelector('.message').textContent = '⛔️ No Number!'; 
+
+        // if the guess is the same as secretNumber:
+    } else if (guess === secretNumber) {
+        document.querySelector('.message').textContent = '🎉 Correct Number!';
+
+        // if the guess is bigger than secretNumber:
+    } else if(guess > secretNumber) {
+        document.querySelector('.message').textContent = '⤴️ Too High!';
+
+        // if guess is lower than than secretNumber:
+    } else if (guess < secretNumber) {
+        document.querySelector('.message').textContent = '⤵️ Too Low!';
+    }
 });
 
