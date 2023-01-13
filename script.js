@@ -30,7 +30,6 @@ console.log(document.querySelector('.guess').value);
 
 //secretNumber needs to be global, so set it outside of the .check button/addEventListener
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
-document.querySelector('.number').textContent = secretNumber; 
 
 // each time if guessing number is wrong - the score will decrease by 1
 // declare it with let because it will change throughout each play
