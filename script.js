@@ -2,7 +2,7 @@
 
 //What is DOM manipulation? 
 //      Document Object Model: a connection point between HTML doc and JS 
-
+//      to manipulate the DOM remember to use string capsule 
 //logging message to the console to see: 
 /*
 console.log(document.querySelector('.message').
@@ -41,21 +41,26 @@ document.querySelector('.check').addEventListener('click', function() {
    // log the guess and also the data type
     console.log(guess, typeof guess);
 
-    //if there is no guess and 'check!' button is clicked:
+    //when there is no guess and 'check!' button is clicked:
     if(!guess) {
         document.querySelector('.message').textContent = '⛔️ No Number!'; 
 
-        // if the guess is the same as secretNumber:
+        // when player wins:
     } else if (guess === secretNumber) {
         document.querySelector('.message').textContent = '🎉 Correct Number!';
 
-        // if the guess is bigger than secretNumber:
+    //when player wins the game - change the background color - to do that we need to manipulate the style in CSS 
+    document.querySelector('body').style.backgroundColor = '#60b347'; 
+        //increase the width:
+    document.querySelector('.number').style.width = '30rem';
+
+        // when guess is too high:
     } else if(guess > secretNumber) {
 
-        // if the player score is 1 or less it will dispute the following conditions:
+        // when the player score is 1 or less it will dispute the following conditions:
         if (score > 1) {
             document.querySelector('.message').textContent = '⤴️ Too High!';
-            // if the guess is too high, it will auto decrement from starting score value
+            // when the guess is too high, it will auto decrement from starting score value
             score--;
             // then it will log it on the DOM with the decrement score
             document.querySelector('.score').textContent = score;
@@ -64,13 +69,13 @@ document.querySelector('.check').addEventListener('click', function() {
             document.querySelector('.score').textContent = 0;
         }
        
-        // if guess is lower than than secretNumber:
+        // when guess is too low: 
     } else if (guess < secretNumber) {
 
-        // if the player score is 1 or less it will dispute the following conditions:
+        // when the player score is 1 or less it will dispute the following conditions:
         if (score > 1) {
             document.querySelector('.message').textContent = '⤵️ Too Low!';
-            // if the guess is too low, it will auto decrement from starting score value
+            // when the guess is too low, it will auto decrement from starting score value
             score--;
             // then it will log it on the DOM with the decrement score
             document.querySelector('.score').textContent = score;
@@ -80,5 +85,4 @@ document.querySelector('.check').addEventListener('click', function() {
         }
     }
 });
-
 
