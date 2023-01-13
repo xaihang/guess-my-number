@@ -47,6 +47,7 @@ document.querySelector('.check').addEventListener('click', function() {
     // log the number entered in the square, will ONLY be call once 'check!' button is 'click'
     // console.log(document.querySelector('.guess').value); 
    const guess = Number(document.querySelector('.guess').value);
+
    // log the guess and also the data type
     console.log(guess, typeof guess);
 
@@ -69,36 +70,21 @@ document.querySelector('.check').addEventListener('click', function() {
         document.querySelector('.highscore').textContent = highscore;
     }
 
-        // when guess is too high:
-    } else if(guess > secretNumber) {
-
-        // when the player score is 1 or less it will dispute the following conditions:
-        if (score > 1) {
-            document.querySelector('.message').textContent = '⤴️ Too High!';
-            // when the guess is too high, it will auto decrement from starting score value
-            score--;
-            // then it will log it on the DOM with the decrement score
-            document.querySelector('.score').textContent = score;
-        } else {
-            document.querySelector('.message').textContent = '❌ YOU LOST THE GAME!';
-            document.querySelector('.score').textContent = 0;
-        }
-       
-        // when guess is too low: 
-    } else if (guess < secretNumber) {
-
-        // when the player score is 1 or less it will dispute the following conditions:
-        if (score > 1) {
-            document.querySelector('.message').textContent = '⤵️ Too Low!';
-            // when the guess is too low, it will auto decrement from starting score value
-            score--;
-            // then it will log it on the DOM with the decrement score
-            document.querySelector('.score').textContent = score;
-        } else {
-            document.querySelector('.message').textContent = '❌ YOU LOST THE GAME!';
-            document.querySelector('.score').textContent = 0;
-        }
+// when guess is wrong or is different from secretNumber:
+}  else if (guess !== secretNumber) {
+    if (score > 1) {
+        document.querySelector('.message').textContent = 
+        guess > secretNumber ? '⤴️ Too High!' : '⤵️ Too Low!';;
+        // when the guess is too high/low, it will auto decrement from starting score value
+        score--;
+        // then it will log it on the DOM with the decrement score
+        document.querySelector('.score').textContent = score;
+    } else {
+        document.querySelector('.message').textContent = '❌ YOU LOST THE GAME!';
+        document.querySelector('.score').textContent = 0;
     }
+}
+    
 });
 
 
@@ -122,9 +108,5 @@ document.querySelector('.again').addEventListener('click', function() {
     //  restore the original bg-color #222 and number width of 15rem: 
     document.querySelector('body').style.backgroundColor = '#222';
     document.querySelector('.number').style.width = '15rem';
-
-
 });
-
-
 
