@@ -4,6 +4,7 @@
 //      Document Object Model: a connection point between HTML doc and JS 
 
 //logging message to the console to see: 
+/*
 console.log(document.querySelector('.message').
 textContent); 
 
@@ -17,5 +18,18 @@ document.querySelector('.score').textContent = 10;
 //guess number to compute the value; 
 document.querySelector('.guess').value = 23; 
 console.log(document.querySelector('.guess').value);
+*/
 
-//handling click on the 'check!' button:
+//handling click on the 'check!' button: by using addEventListener() method
+document.querySelector('.check').addEventListener('click', function() {
+    // log the number we enter in the square, will ONLY be call once 'check!' button is 'click'
+    // console.log(document.querySelector('.guess').value); 
+   const guess = Number(document.querySelector('.guess').value);
+   // log the guess and also the data type
+    console.log(guess, typeof guess);
+
+    //if there is no guess and 'check!' button is clicked:
+    if(!guess) {
+        document.querySelector('.message').textContent = '⛔️ No number!'; 
+    }
+})
