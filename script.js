@@ -5,6 +5,10 @@
 //What is DOM manipulation? 
 //      Document Object Model: a connection point between HTML doc and JS 
 //      to manipulate the DOM remember to use string capsule the value 
+//Refractory: Keep DRY in mind 
+//       condense duplicate codes
+//        
+
 //logging message to the console to see: 
 /*
 console.log(document.querySelector('.message').
@@ -36,6 +40,12 @@ let score = 20;
 //need to store the highscore in a variable 
 let highscore = 0;
 
+
+//created a function that's reusable/repetitive: 
+const displayMessage = function(message) {
+    document.querySelector('.message').textContent = message; 
+}
+
 //-------------------------------------------//
 //----------THE GAMING ENVIRONMENT-----------//
 //-------------------------------------------//
@@ -53,11 +63,15 @@ document.querySelector('.check').addEventListener('click', function() {
 
     //when there is no guess and 'check!' button is clicked:
     if(!guess) {
-        document.querySelector('.message').textContent = '⛔️ No Number!'; 
+        // document.querySelector('.message').textContent = '⛔️ No Number!'; 
+          //refractor snippet code above:
+        displayMessage('⛔️ No Number!');
 
         // when player wins:
     } else if (guess === secretNumber) {
-        document.querySelector('.message').textContent = '🎉 Correct Number!';
+        // document.querySelector('.message').textContent = '🎉 Correct Number!';
+          //refractor snippet code above:
+        displayMessage('🎉 Correct Number!');
 
     //when player wins the game - change the background color - to do that we need to manipulate the style in CSS 
     document.querySelector('body').style.backgroundColor = '#60b347'; 
@@ -73,14 +87,19 @@ document.querySelector('.check').addEventListener('click', function() {
 // when guess is wrong or is different from secretNumber:
 }  else if (guess !== secretNumber) {
     if (score > 1) {
-        document.querySelector('.message').textContent = 
-        guess > secretNumber ? '⤴️ Too High!' : '⤵️ Too Low!';;
+        // document.querySelector('.message').textContent = 
+        // guess > secretNumber ? '⤴️ Too High!' : '⤵️ Too Low!';
+         //refractor snippet code above:
+        displayMessage(guess > secretNumber ? '⤴️ Too High!' : '⤵️ Too Low!');
+        
         // when the guess is too high/low, it will auto decrement from starting score value
         score--;
         // then it will log it on the DOM with the decrement score
         document.querySelector('.score').textContent = score;
     } else {
-        document.querySelector('.message').textContent = '❌ YOU LOST THE GAME!';
+        // document.querySelector('.message').textContent = '❌ YOU LOST THE GAME!';
+        //refractor snippet code above:
+        displayMessage('❌ YOU LOST THE GAME!');
         document.querySelector('.score').textContent = 0;
     }
 }
