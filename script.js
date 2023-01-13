@@ -30,6 +30,9 @@ document.querySelector('.number').textContent = secretNumber;
 let score = 20; 
 
 
+//-------------------------------------------//
+//----------THE GAMING ENVIRONMENT-----------//
+//-------------------------------------------//
 //handling click on the 'check!' button: by using addEventListener() method
 document.querySelector('.check').addEventListener('click', function() {
     // log the number entered in the square, will ONLY be call once 'check!' button is 'click'
@@ -48,19 +51,33 @@ document.querySelector('.check').addEventListener('click', function() {
 
         // if the guess is bigger than secretNumber:
     } else if(guess > secretNumber) {
-        document.querySelector('.message').textContent = '⤴️ Too High!';
-        // if the guess is too high, it will auto decrement from starting score value
-        score--;
-        // then it will log it on the DOM with the decrement score
-        document.querySelector('.score').textContent = score;
 
+        // if the player score is 1 or less it will dispute the following conditions:
+        if (score > 1) {
+            document.querySelector('.message').textContent = '⤴️ Too High!';
+            // if the guess is too high, it will auto decrement from starting score value
+            score--;
+            // then it will log it on the DOM with the decrement score
+            document.querySelector('.score').textContent = score;
+        } else {
+            document.querySelector('.message').textContent = '❌ YOU LOST THE GAME!';
+            document.querySelector('.score').textContent = 0;
+        }
+       
         // if guess is lower than than secretNumber:
     } else if (guess < secretNumber) {
-        document.querySelector('.message').textContent = '⤵️ Too Low!';
-          // if the guess is too high, it will auto decrement from starting score value
-        score--;
-         // then it will log it on the DOM with the decrement score
-        document.querySelector('.score').textContent = score;
+
+        // if the player score is 1 or less it will dispute the following conditions:
+        if (score > 1) {
+            document.querySelector('.message').textContent = '⤵️ Too Low!';
+            // if the guess is too low, it will auto decrement from starting score value
+            score--;
+            // then it will log it on the DOM with the decrement score
+            document.querySelector('.score').textContent = score;
+        } else {
+            document.querySelector('.message').textContent = '❌ YOU LOST THE GAME!';
+            document.querySelector('.score').textContent = 0;
+        }
     }
 });
 
