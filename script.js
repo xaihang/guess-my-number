@@ -34,13 +34,13 @@ document.querySelector('.number').textContent = secretNumber;
 let score = 20; 
 
 //need to store the highscore in a variable 
-let highScore = 0;
+let highscore = 0;
 
 //-------------------------------------------//
 //----------THE GAMING ENVIRONMENT-----------//
 //-------------------------------------------//
 
-//.... input box, check! button, score and highScore area..../
+//.... input box, check! button, score and highscore area..../
 
 //handling click on the 'check!' button: by using addEventListener() method
 document.querySelector('.check').addEventListener('click', function() {
@@ -64,9 +64,9 @@ document.querySelector('.check').addEventListener('click', function() {
     document.querySelector('.number').style.width = '30rem';
 
     // check the current score vs highScore, if current score is higher than set it to the new highScore
-    if(score >highScore) {
-        highScore = score;
-        document.querySelector('.highscore').textContent = highScore;
+    if(score > highscore) {
+        highscore = score;
+        document.querySelector('.highscore').textContent = highscore;
     }
 
         // when guess is too high:
