@@ -26,21 +26,21 @@ console.log(document.querySelector('.guess').value);
 //       or guess is too low to secret number
 
 //Secret number needs to be global, so set it outside of the .check button/addEventListener
-const number = Math.trunc(Math.random() * 20) + 1;
-document.querySelector('.number').textContent = number; 
+const secretNumber = Math.trunc(Math.random() * 20) + 1;
+document.querySelector('.secretNumber').textContent = secretNumber; 
 
 
 //handling click on the 'check!' button: by using addEventListener() method
 document.querySelector('.check').addEventListener('click', function() {
-    // log the number we enter in the square, will ONLY be call once 'check!' button is 'click'
+    // log the secretNumber we enter in the square, will ONLY be call once 'check!' button is 'click'
     // console.log(document.querySelector('.guess').value); 
-   const guess = Number(document.querySelector('.guess').value);
+   const guess = secretNumber(document.querySelector('.guess').value);
    // log the guess and also the data type
     console.log(guess, typeof guess);
 
     //if there is no guess and 'check!' button is clicked:
     if(!guess) {
         document.querySelector('.message').textContent = '⛔️ No number!'; 
-    }
+    } else if(guess === number)
 });
 
